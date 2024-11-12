@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valid</title>
+    <style>
+      form {
+        text-align: center;
+        border: none;
+        padding: 20px 10px;
+        border-radius: 5px 10px;
+        width: 300px;
+        margin: 0 auto;
+        background-color: #f581b7;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <form action="#" name="login">
+        <h3>Filup Your Information</h3>
+        <div>
+          ID:
+          <input type="text" name="id" />
+        </div>
+        <br />
+        <div>
+          Name:
+          <input type="text" name="galib" />
+        </div>
+        <br />
+        <div>
+          Email:
+          <input type="text" name="mail" id="mail" onblur="validMail()" />
+        </div>
+        <br />
+        <div>
+          Password:
+          <input type="password" name="password" id="password" />
+        </div>
+        <br />
+        <div>
+          Gender:
+          <input type="radio" name="x" value="Male" />Male
+          <input type="radio" name="x" value="Female" />Female
+        </div>
+        <br />
+        <div>
+          Round:
+          <select name="" id="">
+            <option value="">61</option>
+            <option value="">62</option>
+            <option value="">63</option>
+          </select>
+        </div>
+        <br />
+        <div style="margin-bottom: 30px">
+          <input type="submit" value="Submit" onclick="loginFile()" />
+          <input type="reset" value="Reset" />
+        </div>
+      </form>
+    </section>
+    <script>
+      function validMail() {
+        var email = document.getElementById("mail");
+        var emailCheck = /^[^ ]+@[^ ]+\.[a-z]{2,4}$/;
+        if (!emailCheck.test(email.value)) {
+          alert("plese type valid mail");
+          document.getElementById("mail");
+          return false;
+        } else {
+          document.getElementById("mail");
+        }
+        return true;
+      }
+      function loginFile() {
+        var id = document.login.id.value;
+        var name = document.login.galib.value;
+        var email = document.login.mail.value;
+        var password = document.login.password.value;
+        if (password.length < 6) {
+          alert("Password is too Sort");
+          return;
+        } else if (password.length > 10) {
+          alert("Password is too long");
+          return;
+        }
+        var gender = "";
+        for (i = 0; i < document.login.x.length; i++) {
+          if (document.login.x[i].checked) {
+            gender = document.login.x[i].value;
+          }
+        }
+
+        if (id && name && email && password) {
+          var doc = open("", "", "width=300px, height=300px");
+          with (doc.document) {
+            write("ID: " + id + "<br>");
+            write("Name: " + name + "<br>");
+            write("Email: " + email + "<br>");
+            write("Password: " + password + "<br>");
+
+            write("Gender: " + gender + "<br>");
+          }
+        } else {
+          alert("filup min req");
+        }
+      }
+    </script>
+  </body>
+</html>
