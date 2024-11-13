@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-mail Validation</title>
+    <style>
+      form {
+        padding-top: 10px;
+        justify-content: center;
+        text-align: center;
+        border: none;
+        border-radius: 5px 10px;
+        box-shadow: 30px;
+        height: 400px;
+        width: 400px;
+        background-color: #92d0e1;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <form name="login">
+        <h1>Filup Your Information</h1>
+        <div>
+          Name:
+          <input type="text" name="galib" />
+        </div>
+        <br />
+        <div>
+          E-mail:
+          <input type="text" name="mail" id="mail" onblur="smsMe()" />
+        </div>
+        <br />
+        <div>
+          Password:
+          <input type="password" name="password" />
+        </div>
+        <br />
+        <div>
+          Gender:
+          <input type="radio" name="x" value="Male" />Male
+          <input type="radio" name="x" value="Female" />Female
+        </div>
+        <br />
+        <div>
+          Education:
+          <input type="checkbox" value="HSC" name="e" />HSC
+          <input type="checkbox" value="DIPLOMA" name="e" />DIPLOMA
+        </div>
+        <br />
+        <div>
+          Subject:
+          <select name="subject" id="subject">
+            <option value="CSE">CSE</option>
+            <option value="EEE">EEE</option>
+            <option value="ME">ME</option>
+          </select>
+        </div>
+        <br />
+        <div>
+          <input type="reset" value="Reset" />
+          <input type="submit" value="Submit" onclick="bornohin()" />
+        </div>
+      </form>
+    </section>
+
+    <script>
+      function smsMe() {
+        var email = document.getElementById("mail");
+        var mailC = /^[^ ]+@[^ ]+\.[a-z]{3,4}$/;
+        if (!mailC.test(email.value)) {
+          alert("type valid mail");
+          document.getElementById("mail");
+          return false;
+        }
+        return true;
+      }
+
+      function bornohin() {
+        var name = document.login.galib.value;
+        var email = document.login.mail.value;
+        var password = document.login.password.value;
+        var gender = document.login.x.value;
+        var education = "";
+        for (i = 0; i < document.login.e.length; i++) {
+          if (document.login.e[i].checked) {
+            education += document.login.e[i].value + " ";
+          }
+        }
+        var subject = document.login.subject.value;
+
+        var galib = open("", "", "height=300px, width=300px");
+        with (galib.document) {
+          write(
+            '<div style= "padding-top: 10px;justify-content: center;text-align: center;border: none;border-radius: 5px 10px;box-shadow: 30px;height: 200px;width: 200px;background-color: #92d0e1">'
+          );
+          write("Name: " + name + "<br>");
+          write("E-mail: " + email + "<br>");
+          write("Password: " + password + "<br>");
+          write("Gender: " + gender + "<br>");
+          write("Education: " + education + "<br>");
+          write("Subject: " + subject + "<br>");
+          write('<button onclick="self.close()">Close</button>');
+          write('<button onclick="self.print()">Print</button>');
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valid-Mail</title>
+  </head>
+  <body>
+    <section>
+      <div>
+        <form name="login">
+          <div>
+            Name:
+            <input type="text" id="name" name="galib" />
+          </div>
+          <br />
+          <div>
+            Email:
+            <input
+              type="text"
+              id="mailCheck"
+              name="mail"
+              onblur="checkEmail()"
+            />
+          </div>
+          <br />
+          <div>
+            Course:
+            <select name="course" id="id">
+              <option value="MBA">MBA</option>
+              <option value="MBA">BBA</option>
+              <option value="MBA">BSC</option>
+            </select>
+          </div>
+          <br />
+          <div>
+            SEX:
+            <input type="radio" name="x" value="Male" />Male
+            <input type="radio" name="x" value="Female" />Female
+          </div>
+          <br />
+          <div>
+            <input type="submit" value="submit" onclick="my_f()" />
+          </div>
+        </form>
+      </div>
+    </section>
+    <script>
+      function checkEmail() {
+        var mail = document.getElementById("mailCheck");
+        var mailValid = /^[^ ]+@[^ ]+\.[a-z]{3,4}$/;
+        if (!mailValid.test(mail.value)) {
+          alert("plese type a valid mail");
+          document.getElementById("mailCheck");
+          return false;
+        } else {
+          document.getElementById("mailCheck");
+        }
+        return true;
+      }
+
+      function my_f() {
+        var fullName = document.login.galib.value;
+        var validMail = document.login.mail.value;
+        var a = open("", "", "height=300px, width=300px");
+        with (a.document) {
+          write("Name: " + fullName + "<br>");
+          write("E-mail: " + validMail + "<br>");
+          write(<button onclick="self.close()">Close</button>);
+          write(<button onclick="self.print()">Print</button>);
+        }
+      }
+    </script>
+  </body>
+</html>

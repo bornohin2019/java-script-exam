@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>home-work</title>
+  </head>
+  <body>
+    <section>
+      <div class="container">
+        <form action="" name="login">
+          <h1>Filup Your Information</h1>
+          <br />
+          <div>
+            Name:
+            <input type="text" name="galib" />
+          </div>
+          <br />
+          <div>
+            Email:
+            <input type="text" name="mail" id="mail" onblur="validMail()" />
+          </div>
+          <br />
+          <div>
+            Password:
+            <input type="password" name="pass" />
+          </div>
+          <br />
+          <div>
+            Course:
+            <select name="option" id="course">
+              <option value="MBA">MBA</option>
+              <option value="BBA">BBA</option>
+              <option value="BSC">BSC</option>
+            </select>
+          </div>
+          <br />
+          <div>
+            Gender:
+            <input type="radio" name="x" value="Male" />Male
+            <input type="radio" name="x" value="Female" />Female
+          </div>
+          <br />
+          <div>
+            <input type="submit" value="Submit" onclick="bornohin()" />
+            <input type="reset" value="Reset" />
+          </div>
+        </form>
+      </div>
+    </section>
+    <script>
+      function validMail() {
+        var email = document.getElementById("mail");
+        var emailCheck = /^[^ ]+@[^ ]+\.[a-z]{2,4}$/;
+        if (!emailCheck.test(email.value)) {
+          alert("plese type valid mail");
+          document.getElementById("mail");
+          return false;
+        }
+        // else {
+        //   document.getElementById("mail");
+        // }
+        return true;
+      }
+      //   var email = document.getElementById("mail").value; // Get the input value
+      //   var validMail = /^[^ ]+@[^ ]+\.[a-z]{2,4}$/; // Regular expression for email validation
+      //   if (!validMail.test(email)) {
+      //     alert("Please type a valid email address");
+      //     return false; // Prevent form submission
+      //   }
+      //   return true; // Email is valid
+      // }
+
+      function bornohin() {
+        var name = document.login.galib.value;
+        var email = document.login.mail.value;
+        var password = document.login.pass.value;
+        var course = document.login.option.value;
+        var gender = ""; //document.login.x.value;
+        for (i = 0; i < document.login.x.length; i++) {
+          if (document.login.x[i].checked) {
+            gender = document.login.x[i].value;
+          }
+        }
+
+        var dataCollect = open("", "", "width=300px, height=300px");
+        with (dataCollect.document) {
+          write("Name: " + name + "<br>");
+          write("E-mail: " + email + "<br>");
+          write("Password: " + password + "<br>");
+          write("Course: " + course + "<br>");
+          write("Gender: " + gender + "<br>");
+          write('<button onclick="self.close()">Close</button>');
+          write('<button onclick="self.print()">Print</button>');
+        }
+      }
+    </script>
+  </body>
+</html>
